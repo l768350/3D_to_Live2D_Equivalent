@@ -38,6 +38,16 @@ python3 add_obj_deformer.py --obj model.obj --in existing.inx --out result.inx -
 
 Linux 上桌面版如果提示缺 `tkinter`：`sudo apt install python3-tk`（或对应发行版包名）。
 
+### 使用小贴士
+
+- 模型面数太多/文件太大可能导致程序崩溃
+- 结果比例看起来不对，试着调整 --scale（GUI 里对应的参数）
+- 模型有 UV island 的话，可以在右上角导入贴图后跑 full-topology-uv，理论上能把 3D 模型直接"写入"到 2D 上；但一个 OBJ 里如果有多个距离较远、零散的 UV island，可能会跑不出来
+- 想做侧面/背面角度，调最下面的"笼子朝向"
+- 选好 OBJ 后记得点"导入"刷新组件列表；一个 .obj 文件可以包含多个组件
+- cylinder 方式建议自己调整 cols/rows，点数太少网格形状可能不对
+- 输出前一定要点"浏览"选另存为路径、输入文件名确认、再点"保存到这个路径"，改动才会真正写入电脑文件；在这之前的所有操作都只是暂存在内存里，没有落盘
+
 ## 功能特点
 
 - 三种笼子构筑方式（`--cage-method`）：`cylinder`（默认，绕 Y 轴柱面展开，覆盖模型 360°）、`full-topology`（直接复用模型自身网格）、`full-topology-uv`（复用网格+模型自带 UV，可搭配模型自身贴图）
@@ -65,3 +75,7 @@ Linux 上桌面版如果提示缺 `tkinter`：`sudo apt install python3-tk`（�
 - `full-topology-uv` 模式不生成 Roll 参数，需在 Inochi Creator 里手动补
 - `full-topology`（正交投影）模式不支持 `--node-type part`
 - 按 UV island 分组（`--group-by island`）尚未接入主流程，GUI 的"诊断"按钮可查看拆分结果，但暂不能直接生成节点
+
+### 使用许可
+
+欢迎随便使用本项目，包括但不限于直接使用、修改代码。
