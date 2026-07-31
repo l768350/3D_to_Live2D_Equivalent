@@ -1,3 +1,5 @@
+[English](README.en.md) | 简体中文
+
 # 3D → Inochi2D OBJ Deformer
 
 > 本项目由个人使用 AI 辅助编程完成
@@ -23,7 +25,6 @@ Linux 上如果提示缺 `tkinter`：`sudo apt install python3-tk`（或对应�
 pip install -r requirements.txt --break-system-packages
 streamlit run app.py
 ```
-如果 python3 命令不存在，换成 python app_tk.py试试
 
 两套 GUI 操作逻辑一致：导入 OBJ →（可选）导入已有 `.inx` 增量修改 →（可选）先修正模型初始朝向 → 逐个部件填名字/挂载点/参数设置 → 确认写入 → 保存 `.inx`。
 
