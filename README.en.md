@@ -38,6 +38,16 @@ python3 add_obj_deformer.py --obj model.obj --in existing.inx --out result.inx -
 ```
 See `add_obj_deformer.py --help` for the full list of options.
 
+### Tips
+- Models with too many faces / very large files can crash the app
+- If the output proportions look off, try adjusting --scale (or the matching field in the GUI)
+- If a model has UV islands, you can import a texture in the top-right corner and run full-topology-uv — in theory this writes the 3D model directly onto a 2D surface. But if an OBJ has multiple UV islands that are far apart and scattered, it may fail to run
+- To do side/back angles, adjust "cage orientation" at the bottom of the panel
+- After picking an OBJ, remember to click "Import" to refresh the part list; a single .obj file can contain multiple parts
+- With the cylinder method, it's worth tuning cols/rows yourself — too few points can distort the mesh shape
+- Before exporting, you must click "Browse" to choose a save path, confirm the filename, then click "Save to this path" — only then are changes actually written to disk. Everything before that is just held in memory
+
+
 ## Features
 
 - Three cage-building methods (`--cage-method`): `cylinder` (default — cylindrical unwrap around the Y axis, covers the full 360° of the model), `full-topology` (reuses the model's own mesh directly), `full-topology-uv` (reuses the model's mesh with its own UVs, so the model's own texture can be used directly)
@@ -65,3 +75,7 @@ See `add_obj_deformer.py --help` for the full list of options.
 - `full-topology-uv` mode doesn't generate a Roll parameter — add it manually in Inochi Creator
 - `full-topology` (orthographic projection) mode doesn't support `--node-type part`
 - Grouping by UV island (`--group-by island`) isn't wired into the main flow yet; the GUI's "diagnose" button shows the island breakdown, but you can't generate a node directly from one yet
+
+### License
+
+Feel free to use this project however you like, including but not limited to using it as-is or modifying the code.
